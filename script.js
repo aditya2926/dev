@@ -2,6 +2,8 @@ const hamburger = document.querySelector('.header .nav-bar .nav-list .hamburger'
 const mobile_menu = document.querySelector('.header .nav-bar .nav-list ul');
 const menu_item = document.querySelectorAll('.header .nav-bar .nav-list ul li a');
 const header = document.querySelector('.header.container');
+const loader = document.querySelector('.loader');
+const loaderSquares = document.querySelectorAll('.loader-square');
 
 hamburger.addEventListener('click', () => {
 	hamburger.classList.toggle('active');
@@ -24,5 +26,28 @@ menu_item.forEach((item) => {
 	});
 });
 
+
+
+function startLoader() {
+  loaderSquares.forEach((square) => {
+	square.style.animationPlayState = 'running';
+  });
+  loader.style.display = 'flex';
+}
+
+function stopLoader() {
+  loaderSquares.forEach((square) => {
+	square.style.animationPlayState = 'paused';
+  });
+  loader.style.display = 'none';
+}
+
+// Start the loader
+startLoader();
+
+// Stop the loader after a delay (e.g., 3 seconds)
+setTimeout(() => {
+  stopLoader();
+}, 5000);
 
 
